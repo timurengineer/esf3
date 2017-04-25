@@ -1,0 +1,16 @@
+machine:
+  node:
+    version: 7.0.0
+  python:
+    version: 2.7.10
+
+dependencies:
+  pre:
+    - pip install ansible
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - npm run clean && npm run dist
+      - ansible-playbook scripts/ansible/deploy.yml -i scripts/ansible/prod
