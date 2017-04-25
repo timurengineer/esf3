@@ -1,0 +1,17 @@
+---
+- hosts: frontend
+  user: root
+  become: true
+  become_user: root
+  vars:
+    www_root: /www/
+    app_dir: esf/
+  tasks:
+  - name: Create /www/
+    file: path={{ www_root }} state=directory
+  - name: copy dist files
+    synchronize:
+      archive: yes
+      src: ../../dist/
+      dest: "{{www_root}}{{app_dir}}"
+    tags: copy_www
