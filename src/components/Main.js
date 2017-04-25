@@ -73,7 +73,7 @@ class Main extends Component {
         queryString += c.substring(name.length, c.length);
       }
     }
-    
+
     for (var i = 0; i < this.state.invoices.length; i++) {
       queryString += '&idList[]=' + this.state.invoices[i].invoiceId;
     }
@@ -88,7 +88,7 @@ class Main extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="index">
         <AppBar
           title="ESF"
           onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
@@ -100,7 +100,7 @@ class Main extends Component {
           }
         />
         <LinearProgress mode="indeterminate" style={styles.progressBar}/>
-        
+
         <Drawer
           docked={false}
           width={300}
